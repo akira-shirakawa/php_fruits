@@ -1,0 +1,21 @@
+.wrapper{
+    display:flex;
+    flex-wrap:wrap;
+}
+.item{
+    width:20%;
+    height:100px;
+    border-radius: 2px;
+    border:solid 1.4px #eee;
+    padding:4px;
+    margin:10px;
+}
+.top{
+    height:50px;
+}
+.botton{
+    height:50px;
+}
+.item:hover{
+    box-shadow: 2px 2px 4px gray;
+}
