@@ -19,3 +19,37 @@
 .item:hover{
     box-shadow: 2px 2px 4px gray;
 }
+.relative{
+    position:relative;
+
+}
+.ab{
+    position:absolute;
+    top:5px;
+    right:10px;
+}
+.edit_item{
+    height:30px;
+    border: 2px solid #eee;
+    width:100%;
+    padding:5px;
+    background-color: #fff;
+}
+.edit_item:hover{
+    background-color: #efefef;
+    cursor: pointer;
+}
+.edit_form{
+    box-shadow: 2px 2px 4px gray;
+    position:absolute;
+    top:5px;
+    height:20px;
+    right:10px;
+    width:70px;
+
+    z-index: 5;
+}
+.narrow_form{
+  
+    display:inline;
+}

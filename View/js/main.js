@@ -1,6 +1,6 @@
 $('.item').click(function(){
    id = $(this).attr('class');
-   id =id.slice(0,1);
+   id =id.replace(/[^0-9]/g, '');
    text = $(this).text().trim();
    size_flag = $(this).parent().parent().attr('class') == 'size';
    if(size_flag){
@@ -24,5 +24,25 @@ $('.js-submit-target').click(function(){
         $('.notification').toggleClass('is-hidden');
     }, 1000);
     }
+    
+}),
+$('.ab').click(function(){
+    $(this).toggleClass('is-hidden');
+    $(this).siblings('.edit_form').toggleClass('is-hidden');
+    
+}),
+$('.edit_close').click(function(){
+    console.log('hoge');
+    $(this).parent().toggleClass('is-hidden');
+    $(this).parent().siblings('.ab').toggleClass('is-hidden');
+}),
+$('.edit_delete').click(function(){
+    confirm = window.confirm("本当に削除しますか？");
+    if(confirm){
+        id=$(this).parent().attr('class').replace(/[^0-9]/g, '');
+        $('form [class=edit_delete]').val(id);
+        $('form').submit();
+    }
+   
     
 })

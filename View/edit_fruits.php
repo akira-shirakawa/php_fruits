@@ -1,10 +1,13 @@
 <?php
 ini_set('display_errors', 1);
 require_once '../Class/Dbc.php';
+$id = $_GET['id'];
 $size = new Db('size');
 $color = new Db('color');
-$size = $size->getMessage();
-$color = $color->getMessage();
+$fruits = new Db('fruits');
+$size_data = $size->getMessage();
+$color_data = $color->getMessage();
+
 ?>
 
 <!DOCTYPE html>
@@ -26,20 +29,21 @@ $color = $color->getMessage();
     <div class="column"></div>
     <div class="column">
         <p class="is-size-2">
-            fruits登録
+            fruits編集
         </p>
-            <form action="../Main/Fruits/create_fruits.php" method="post">
+            <form action="../Main/Fruits/update_fruits.php" method="post">
                 <p>フルーツ名</p>
-                <input type="text" class="input" name="fruits_name" class="fruits_name">        
-                <input type="hidden" name="color_id" class="color_id" value="">
-                <input type="hidden" name="size_id" class="size_id" value="">
+                <input type="text" class="input" name="fruits_name" class="fruits_name" value="<?php echo $fruits->show($id)['name'] ?>">        
+                <input type="hidden" name="color_id" class="color_id" value="<?php echo $fruits->show($id)['color_id'] ?>">
+                <input type="hidden" name="size_id" class="size_id" value="<?php echo $fruits->show($id)['size_id'] ?>">
+                <input type="hidden" name="id" value="<?php echo $id ?>">
             </form>
             <p class="is-size-3">色を選択</p>
-            <p class="value_box js-color-value-box"></p>
+            <p class="value_box js-color-value-box"><?php echo $color->show($fruits->show($id)['color_id'])['color_name']?></p>
             <div class="wrapper">
-            <?php foreach ($color as $value) : ?>
+            <?php foreach ($color_data as $value) : ?>
                 <div class="<?php echo $value['id']?> item">
-                    <div class="top"style="background-color:<?php echo $value['color_key'] ?>">
+                    <div class="top"style="background-color:<?php echo $value['color_key']?>">
                     </div>
                     <div class="bottom has-text-centered">
                         <?php echo $value['color_name'] ?>
@@ -49,9 +53,9 @@ $color = $color->getMessage();
             </div>
             <div class="size">
                 <p class="is-size-3">サイズを選択</p>
-                <p class="value_box"></p>
+                <p class="value_box"><?php echo $size->show($fruits->show($id)['size_id'])['size_name'] ?></p>
                 <div class="wrapper">
-                    <?php foreach ($size as $value) :?>
+                    <?php foreach ($size_data as $value) :?>
                         <div class="<?php echo $value['id'] ?> item has-text-centered">
                             <?php echo $value['size_name'] ?>
                         </div>

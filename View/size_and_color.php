@@ -10,8 +10,8 @@
     <title>Document</title>
 </head>
 <body>
-<nav class="navbar" role="navigation" aria-label="main navigation">
-    <a class="nabvar-item button" href="index.php"><i class="fas fa-home"></i></a>
+<nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+    <a class="navbar-item has-text-white" href="index.php"><i class="fas fa-home"></i></a>
 </nav>
 <div class="columns">
     <div class="column"></div>
@@ -29,17 +29,7 @@
         <div class="box">
             <form action="../Main/Size/create_size.php" method="post">
                 <p>サイズ</p>
-                <input type="number" class="input" name="size_name" required>
-                <!-- <p>サイズキー</p>
-                <div class="select" name="size_key">
-                    <select>
-                        <option value="a">a</option>
-                        <option value="b">b</option>
-                        <option value="c">c</option>
-                        <option value="d">d</option>
-                        <option value="e">e</option>
-                    </select>
-                </div> -->
+                <input type="number" class="input" name="size_name" required>               
                 <input type="submit" class="button" value="送信">
             </form>
         </div>

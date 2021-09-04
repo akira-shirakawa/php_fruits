@@ -19,9 +19,10 @@ $length=(int)$size->getMaxSize()['max(size_name)'];
     <title>Document</title>
 </head>
 <body>
-<nav class="navbar" role="navigation" aria-label="main navigation">
-    <a class="navbar-item button" href="fruits.php">フルーツ登録</a>
-    <a class="navbar-item button" href="size_and_color.php">サイズ、カラー登録</a>
+<nav class="navbar is-primary " role="navigation" aria-label="main navigation">
+    <a class="navbar-item has-text-white" href="fruits.php">フルーツ登録</a>
+    <a class="navbar-item has-text-white" href="size_and_color.php">サイズ、カラー登録</a>
+    <a class="navbar-item has-text-white" href="change_size_and_color.php">サイズ、カラー編集・消去</a>
 </nav>
 <div class="columns">  
     <div class="column"></div>
@@ -33,13 +34,29 @@ $length=(int)$size->getMaxSize()['max(size_name)'];
                 <td><?php echo $value['name'] ?></td>
                 <td><?php echo $color->show($value['color_id'])['color_name'] ?></td>
                 <td><?php echo $size->show($value['size_id'])['size_name']  ?></td>
-               <td> <div class="bar" style="background-color:<?php echo $color->show($value['color_id'])['color_key'] ?>;width:<?php echo (int)$size->show($value['size_id'])['size_name']/($length*0.01+0.000001) ?>%;height:30px"></div></td>
+                <td class="relative">
+                    <div class="ab">
+                    <i class="fas fa-align-justify has-text-grey"></i>
+                    </div>
+                    <div class="<?php echo $value['id']?> edit_form is-hidden has-text-centered	">
+                        <div class="edit_item"><a href="edit_fruits.php?id=<?php echo $value['id']?>">編集</a></div>
+                        <div class="edit_item edit_delete">
+                            消去
+                        </div>
+                        <div class="edit_item edit_close">閉じる</div>
+                    </div>
+                    <div class="bar" style="background-color:<?php echo $color->show($value['color_id'])['color_key'] ?>;width:<?php echo (int)$size->show($value['size_id'])['size_name']/($length*0.01+0.000001) ?>%;height:30px">
+                </div>
+                </td>
             </tr>
         <?php endforeach ;?>
     </table>
     </div>
     <div class="column"></div>
 </div>
+<form action="../Main/Fruits/delete_fruits.php" method="post">
+    <input type="hidden" name="id" class="edit_delete" value="">                        
+</form>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript" src="js/main.js"></script>  
 </body>
