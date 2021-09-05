@@ -23,13 +23,13 @@ Class Db{
         
     }
     public function getMessage(){
-        $sql = "select * from $this->table_name";
+        $sql = "select * from ".$this->table_name;
         $stmt = $this->dbc()->query($sql);
         $result = $stmt->fetchall(PDO::FETCH_ASSOC);
         return $result;
     }
     public function show($id){
-        $sql = "select * from $this->table_name where id=?";
+        $sql = "select * from ".$this->table_name." where id=?";
         $arr=[];
         $arr[]=$id;
         $stmt = $this->dbc()->prepare($sql);
@@ -39,7 +39,7 @@ Class Db{
     
     }
    public function getData($id,$column){
-        $sql = "select * from $this->table_name where $column =?"; 
+        $sql = "select * from ".$this->table_name." where $column =?"; 
         $stmt = $this->dbc()->prepare($sql);
         $stmt->execute([$id]);
         $result = $stmt->fetchall(PDO::FETCH_ASSOC);
@@ -69,7 +69,7 @@ Class Db{
         return $result;       
     }
     public function delete($id){
-        $sql = "delete from $this->table_name where id = ?";
+        $sql = "delete from ".$this->table_name." where id = ?";
         $stmt = $this->dbc()->prepare($sql);
         $stmt->execute([$id]);
         return;

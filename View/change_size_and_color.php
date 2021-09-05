@@ -26,7 +26,7 @@ $color = $color->getMessage();
     <div class="modal modal-color">
         <div class="modal-background"></div>
         <div class="modal-content">
-            <div class="box">
+            <div class="box long-box">
                 <form action="../Main/Color/edit_color.php" method="post">
                     <p>カラーネーム</p>
                     <input type="text" class="input" name="color_name" required>

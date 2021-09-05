@@ -37,8 +37,9 @@ $('.edit_close').click(function(){
     $(this).parent().siblings('.ab').toggleClass('is-hidden');
 }),
 $('.edit_delete').click(function(){
-    confirm = window.confirm("本当に削除しますか？");
-    if(confirm){
+    console.log('delete');
+   
+    if(window.confirm("本当に削除しますか？")){
         id=$(this).parent().attr('class').replace(/[^0-9]/g, '');
         $('form [class=edit_delete]').val(id);
         $('form').submit();

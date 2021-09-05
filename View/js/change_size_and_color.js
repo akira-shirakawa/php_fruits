@@ -23,15 +23,15 @@ $('.modal-background').click(function(){
 
 }),
 $('.color-delete').click(function(){
-    confirm = window.confirm("本当に削除しますか？");
-    if(confirm){
+    
+    if(window.confirm("本当に削除しますか？")){
         $('#color-delete').submit();
     }
     
 }),
 $('.size-delete').click(function(){
-    confirm = window.confirm("本当に削除しますか？");
-    if(confirm){
+   
+    if(window.confirm("本当に削除しますか？")){
         $('#size-delete').submit();
     }
     
